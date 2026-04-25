@@ -1,7 +1,8 @@
+
 # YouTube Clone Project
 
 ## Overview
-This project is a **YouTube Clone** built to simulate core features of a video streaming platform. It includes user authentication, video upload, video streaming, and basic account management functionalities. The backend handles video processing and streaming through uploaded files and URL-based streaming.
+This project is a YouTube Clone built to simulate core features of a video streaming platform. It includes user authentication, video upload, video streaming, and basic account management functionalities. The backend handles video processing and streaming through uploaded files and URL-based streaming using ImageKit.io.
 
 ---
 
@@ -16,7 +17,7 @@ This project is a **YouTube Clone** built to simulate core features of a video s
 - Upload videos from local device
 - Stream videos via URL
 - Video listing and playback
-- Backend handling for media storage
+- Backend handling for media storage using ImageKit.io
 
 ### Upload System
 - Upload video files
@@ -29,39 +30,57 @@ This project is a **YouTube Clone** built to simulate core features of a video s
 
 ## Tech Stack
 - Frontend: HTML, CSS, JavaScript / React
-- Backend: Django / Node.js
+- Backend: Django
 - Database: SQLite / MySQL
-- Media Handling: Django Media / Cloud Storage
+- Media Handling: ImageKit.io
 
 ---
 
 ## Installation & Setup
 
+### Clone the repository
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 ````
 
-### Create Virtual Environment (Django)
+---
+
+### Install pipenv
 
 ```bash
-python -m venv env
-env\Scripts\activate   # Windows
+pip install pipenv
 ```
 
-### Install Dependencies
+---
+
+### Create virtual environment and activate it
 
 ```bash
-pip install -r requirements.txt
+pipenv shell
 ```
 
-### Run Migrations
+---
+
+### Install dependencies
+
+```bash
+pipenv install django
+pipenv install imagekitio
+pipenv install python-dotenv
+```
+
+---
+
+### Run migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### Start Server
+---
+
+### Start server
 
 ```bash
 python manage.py runserver
@@ -69,7 +88,7 @@ python manage.py runserver
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 project/
@@ -78,7 +97,7 @@ project/
 ├── videos/            # Video upload & streaming logic
 ├── templates/         # HTML files
 ├── static/            # CSS, JS, images
-├── media/             # Uploaded videos
+├── media/             # Uploaded videos (or ImageKit references)
 ├── manage.py
 ```
 
@@ -86,19 +105,40 @@ project/
 
 ## Core Pages
 
-* `/register` → Create account
-* `/login` → User login
-* `/logout` → Logout user
-* `/account` → User profile
-* `/upload` → Upload videos
-* `/videos` → Watch videos
+* /register → Create account
+* /login → User login
+* /logout → Logout user
+* /account → User profile
+* /upload → Upload videos
+* /videos → Watch videos
 
 ---
 
-## 🎯 Key Functionality
+## Key Functionality
 
 * Secure authentication system
 * Video upload and streaming
 * URL-based video streaming support
+* ImageKit.io integration for media handling
 * Clean modular backend structure
+
+---
+
+## ImageKit.io Configuration
+
+Create a `.env` file in your project root:
+
+```
+IMAGEKIT_PUBLIC_KEY=your_public_key
+IMAGEKIT_PRIVATE_KEY=your_private_key
+IMAGEKIT_URL_ENDPOINT=your_url_endpoint
+```
+
+ImageKit.io is used for:
+
+* Fast image/video delivery via CDN
+* Media optimization
+* Scalable storage instead of local media files
+
+
 
